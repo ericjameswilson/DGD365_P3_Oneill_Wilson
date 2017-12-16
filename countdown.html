@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <title>You decided: Live</title>
+    <link rel="stylesheet" href="style.css" type="text/css" charset="utf-8" />
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/jquery-ui.js"></script>
+    <script src="scripts/plugins.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+    <script src="scripts/app.js"></script>
+  </head>
+
+  <body>
+    <div id="container" class="cf">
+      <div class="header-countdown">Life or Death? </div>
+      <!--<div id="countdownTimer">-->
+	  <div id="tracked" class="cf">
+		  <div class="one">
+		      <div class="tracker" id="p1-a">0 warmed.</div>
+		      <div class="tracker" id="p1-b">0 washed.</div>
+		  </div>
+		  <div class="two">
+		      <div class="tracker" id="p2-a">0 submerged.</div>
+		      <div class="tracker" id="p2-b">0 decorated.</div>
+		  </div>
+		  <div class="three">
+		      <div class="tracker" id="p3-a">0 grew.</div>
+		      <div class="tracker" id="p3-b">0 killed.</div>
+		  </div>
+      </div>    
+      </div>
+      <div id="video" class="cf">
+	      <video width="95%" height="auto" autoplay controls>
+			<source src="images/finalVideo.mp4" type="video/mp4">
+			</video>
+      </div>
+     
+      <div class="footer-non-fixed">&copy; 2017 LIFE OR DEATH
+        <br /> E. Wilson K. O'Neill </div>
+      <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Dec 11, 2017 00:00:00").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+          // Get todays date and time
+          var now = new Date().getTime();
+
+          // Find the distance between now an the count down date
+          var distance = countDownDate - now;
+
+          // Time calculations for days, hours, minutes and seconds
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          // Display the result in the element with id="demo"
+          document.getElementById("countdownTimer").innerHTML = (days + "d " + hours + "h " + "\n" + minutes + "m " + seconds + "s ");
+
+          // If the count down is finished, write some text
+          if (days == 2) {
+            document.getElementById("countdownTimer").setAttribute(
+              "style", "background-color:#00ffff ; color:#ffbf00;");
+          } else if (days == 1) {
+            document.getElementById("countdownTimer").setAttribute(
+              "style", "background-color:#ffbf00 ; color:#ffb3ff;");
+          } else if (days == 0) {
+            document.getElementById("countdownTimer").setAttribute(
+              "style", "background-color:#ffb3ff ; color:#00ffff;");
+          } else if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdownTimer").style.display="none";
+           /* document.getElementById("tracked").style.display="none";*/
+                      }
+        }, 1000);
+
+      </script>
+    </div>
+  </body>
+
+</html>
